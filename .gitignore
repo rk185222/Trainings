@@ -1,3 +1,6 @@
 
-Pluralsight Courses/Angular Getting Started/Excercise files/10/package-lock.json
-Pluralsight Courses/Angular Getting Started/MyExcercise/hello-world/package-lock.json
+
+package-lock.json
+bin/
+obj/
+.vs/
