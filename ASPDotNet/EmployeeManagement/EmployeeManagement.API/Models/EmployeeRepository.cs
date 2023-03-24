@@ -27,7 +27,9 @@ namespace EmployeeManagement.API.Models
 
         public async Task<IEnumerable<Employee>> GetEmployees()
         {
-            return await appDbContext.Employees.ToListAsync();
+            return await appDbContext.Employees
+                          .Include(e => e.Department)
+                            .ToListAsync();
         }
 
         public async Task<Employee> UpdateEmployee(Employee employee)

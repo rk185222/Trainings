@@ -15,8 +15,10 @@
             First Name
         </label>
         <div class="col-sm-10">
-            <InputText id="firstName" class="form-control" placeholder="First Name"
-                       @bind-Value="EditEmployeeModel.FirstName" />
+            <input id="firstName" class="form-control" placeholder="First Name"
+                       @bind="EditEmployeeModel.FirstName" />
+            @*            <InputText id="firstName" class="form-control" placeholder="First Name"
+            @bind-Value="EditEmployeeModel.FirstName" />*@
             <ValidationMessage For="@(() => EditEmployeeModel.FirstName)" />
         </div>
     </div>
