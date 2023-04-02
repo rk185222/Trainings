@@ -1,0 +1,32 @@
+﻿@page "/employeeoverview"
+
+<h1 class="page-title">All employees</h1>
+
+@if (Employees == null)
+{
+  <p><em>Loading...</em></p>
+}
+else
+{
+  <BlazorAgGrid TRow="Employee"
+                AutoGenerateColumns="false"
+                RowData="Employees"
+                OnSelectionChanged="GridSelectionChanged">
+    <BlazorAgGridColumn HeaderName="Firstname" Field="FirstName"
+                        Sortable="true" Filter="true"></BlazorAgGridColumn>
+    <BlazorAgGridColumn HeaderName="Lastname" Field="LastName"
+                        Sortable="true" Filter="true"></BlazorAgGridColumn>
+  </BlazorAgGrid>
+  @if (SelectedEmployee != null)
+  {
+    <div class="card">
+      <div class="card-header">
+        @SelectedEmployee.FirstName @SelectedEmployee.LastName
+      </div>
+      <div class="card-body">
+        <a class="btn btn-secondary" href="employeeedit/@SelectedEmployee.EmployeeId">edit</a>
+        <a class="btn btn-secondary" href="employeedetail/@SelectedEmployee.EmployeeId">view</a>
+      </div>
+    </div>
+  }
+}

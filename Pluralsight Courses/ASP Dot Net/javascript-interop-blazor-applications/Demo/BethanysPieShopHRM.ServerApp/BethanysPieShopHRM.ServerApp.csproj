@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BethanysPieShopHRM.ComponentsLibrary\BethanysPieShopHRM.ComponentsLibrary.csproj" />
+    <ProjectReference Include="..\BethanysPieShopHRM.GridLibrary\BethanysPieShopHRM.GridLibrary.csproj" />
+    <ProjectReference Include="..\BethanysPieShopHRM.OnlineCheckLibrary\BethanysPieShopHRM.OnlineCheckLibrary.csproj" />
+    <ProjectReference Include="..\BethanysPieShopHRM.Shared\BethanysPieShopHRM.Shared.csproj" />
+  </ItemGroup>
+
+</Project>
