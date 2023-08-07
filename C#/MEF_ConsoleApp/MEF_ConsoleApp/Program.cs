@@ -11,7 +11,7 @@
             while (true)
             {
                 string s = Console.ReadLine();
-                Console.WriteLine("Output-" + p.calculator.Calculate(s));
+                Console.WriteLine("Output-" + p.calculator.Calculate2(s));
             }
         }
     }
