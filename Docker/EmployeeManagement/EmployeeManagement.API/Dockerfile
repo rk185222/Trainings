@@ -11,7 +11,5 @@ FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
 COPY --from=build /app/publish .
 
-EXPOSE 80
-
 ENTRYPOINT ["dotnet", "EmployeeManagement.API.dll"]
 

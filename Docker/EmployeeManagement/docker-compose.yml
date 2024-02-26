@@ -5,31 +5,37 @@ networks:
 
 services:
   employeemanagement.db:
-      container_name: employee-mngmt-db
-      image: mcr.microsoft.com/mssql/server:2019-latest
-      ports:
-        - 8002:1433
-      environment:
-        - ACCEPT_EULA=Y
-        - MSSQL_SA_PASSWORD=7y8u9i0o-p=[
-      networks:
-        - employeemanagementappnetwork
+    container_name: employee-mngmt-db
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    ports:
+      - 8002:1433
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=7y8u9i0o-p=[
+    networks:
+      - employeemanagementappnetwork
 
   employeemanagement.api:
-      container_name: employee-management-app
-      image: ${DOCKER_REGISTRY-}employeemanagementapi
-      build:
-        context: .
-        dockerfile: EmployeeManagement.API/Dockerfile
-      ports:
+    container_name: employee-management-app
+    image: ${DOCKER_REGISTRY-}employeemanagementapi
+    build:
+      context: .
+      dockerfile: EmployeeManagement.API/Dockerfile
+    ports:
       - 8001:80
-      depends_on:
+      - "5001:443"
+    depends_on:
       - employeemanagement.db
-      environment:
+    environment:
       - DB_HOST=employee-mngmt-db
       - DB_NAME=EmployeeDB
       - DB_SA_PASSWORD=7y8u9i0o-p=[
-      networks:
+      - ACCEPT_EULA=Y
+    volumes:
+      - ./data:/var/opt/mssql/data
+      - ./log:/var/opt/mssql/log
+      - ./secrets:/var/opt/mssql/secrets
+    networks:
       - employeemanagementappnetwork
   
   
